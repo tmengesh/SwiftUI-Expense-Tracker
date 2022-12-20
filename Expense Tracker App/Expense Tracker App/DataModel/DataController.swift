@@ -7,16 +7,17 @@
 
 import CoreData
 import Foundation
+import os
 import SwiftUI
-
 class DataController: ObservableObject {
     // Responsible for preparing a model
     let container = NSPersistentContainer(name: "TransactionModel")
+    let logger = Logger.createLogger()
 
     init() {
         container.loadPersistentStores { [self] _, error in
             if let error = error {
-                print("Failed to load data in DataController \(error.localizedDescription)")
+                logger.debug("Failed to load data in DataController \(error.localizedDescription)")
             }
         }
     }
@@ -26,11 +27,11 @@ class DataController: ObservableObject {
     func save(context: NSManagedObjectContext) {
         do {
             try context.save()
-            print("Data saved successfully")
+            logger.info("Data saved successfully")
         } catch {
             // Handle errors in our database
             let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            logger.debug("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 
