@@ -25,6 +25,7 @@ class DataController: ObservableObject {
     // MARK: Save Context To Core Data
 
     func save(context: NSManagedObjectContext) {
+        logger.pretty_function()
         do {
             try context.save()
             logger.info("Data saved successfully")
