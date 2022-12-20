@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import os
 
 struct HomeView: View {
     @StateObject var expenseVM: ExpenseViewModel = .init()
@@ -18,6 +19,8 @@ struct HomeView: View {
     // MARK: Displaying Price
 
     // var transaction: FetchedResults<Transaction>
+    
+    private let logger = Logger.createLogger()
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -121,6 +124,7 @@ struct HomeView: View {
     }
 
     private func deleteTransaction(offsets: IndexSet) {
+        logger.pretty_function()
         withAnimation {
             offsets.map { transaction[$0] }
                 .forEach(managedObjContext.delete)

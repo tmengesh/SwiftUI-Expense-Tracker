@@ -39,6 +39,7 @@ class DataController: ObservableObject {
     // MARK: Add Transaction
 
     func addTransaction(remark: String, amount: Double, date: Date, color: String, type: TransactionType, context: NSManagedObjectContext) {
+        logger.pretty_function()
         let transaction = Transaction(context: context)
         transaction.id = UUID()
         transaction.remark = remark
@@ -53,6 +54,7 @@ class DataController: ObservableObject {
     // MARK: Edit Transaction
 
     func editTransaction(transaction: Transaction, remark: String, amount: Double, date: Date, type: TransactionType, context: NSManagedObjectContext) {
+        logger.pretty_function()
         transaction.remark = remark
         transaction.amount = amount
         transaction.date = date

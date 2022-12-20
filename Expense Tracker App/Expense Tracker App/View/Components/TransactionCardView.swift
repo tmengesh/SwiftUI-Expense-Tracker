@@ -5,6 +5,7 @@
 //  Created by Tewodros Mengesha on 15.12.2022.
 //
 
+import os
 import SwiftUI
 
 struct TransactionCardView: View {
@@ -12,6 +13,8 @@ struct TransactionCardView: View {
 
     var transaction: Transaction
     @EnvironmentObject var expenseVM: ExpenseViewModel
+
+    private let logger = Logger.createLogger()
 
     var body: some View {
         HStack(spacing: 12) {
@@ -59,6 +62,7 @@ struct TransactionCardView: View {
     }
 
     private func convertNumberToPrice(value: Double) -> String {
+        logger.pretty_function()
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
 

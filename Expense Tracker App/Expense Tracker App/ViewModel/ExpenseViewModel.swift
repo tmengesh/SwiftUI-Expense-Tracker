@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import os
 import SwiftUI
 
 class ExpenseViewModel: ObservableObject {
@@ -32,6 +33,8 @@ class ExpenseViewModel: ObservableObject {
     @Published var date: Date = .init()
     @Published var remark: String = ""
 
+    private let logger = Logger.createLogger()
+
     init() {
         // MARK: Fetching Current Month Starting Date
 
@@ -45,12 +48,14 @@ class ExpenseViewModel: ObservableObject {
     // MARK: Fetching Current Month Date String
 
     func currentMonthDateString() -> String {
+        logger.pretty_function()
         return currentMonthStartDate.formatted(date: .abbreviated, time: .omitted) + " - " + Date().formatted(date: .abbreviated, time: .omitted)
     }
 
     // MARK: Converting ConvertedTransaction to Currency String
 
     func convertTransactionToCurrency(transactions: FetchedResults<Transaction>, type: TransactionType = .all) -> String {
+        logger.pretty_function()
         var value: Double = 0
 
         value = transactions.reduce(0) { partialResult, transaction in
@@ -79,12 +84,14 @@ class ExpenseViewModel: ObservableObject {
     // MARK: Converting Selected Dates To String
 
     func convertDateToString() -> String {
+        logger.pretty_function()
         return startDate.formatted(date: .abbreviated, time: .omitted) + " - " + endDate.formatted(date: .abbreviated, time: .omitted)
     }
 
     // MARK: Converting Number To Price
 
     func convertNumberToPrice(value: Double) -> String {
+        logger.pretty_function()
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
 
@@ -94,6 +101,7 @@ class ExpenseViewModel: ObservableObject {
     // MARK: Clearning All Data
 
     func clearData() {
+        logger.pretty_function()
         date = Date()
         type = .all
         remark = ""
