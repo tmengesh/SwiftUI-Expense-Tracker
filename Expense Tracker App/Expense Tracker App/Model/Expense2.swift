@@ -14,14 +14,8 @@ struct Expense2: Identifiable, Hashable {
     var remark: String
     var amount: Double
     var date: Date
-    var type: ExpenseType
+    var type: TransactionType
     var color: String
-}
-
-enum ExpenseType: String {
-    case income = "Income"
-    case expense = "Expenses"
-    case all = "ALL"
 }
 
 var sample_expenses: [Expense2] = [

@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ExpenseCard: View {
+    // MARK: Variables
+
     @EnvironmentObject var expenseVM: ExpenseViewModel
+
+    var transaction: FetchedResults<Transaction>
+
     var isFilter: Bool = false
     var body: some View {
         GeometryReader { _ in
@@ -30,7 +35,7 @@ struct ExpenseCard: View {
 
                     // MARK: Current Month Expenses Price
 
-                    Text(expenseVM.convertExpensesToCurrency(expenses: expenseVM.expenses))
+                    Text(expenseVM.convertTransactionToCurrency(transactions: transaction))
                         .font(.system(size: 35, weight: .bold))
                         .lineLimit(1)
                         .padding(.bottom, 5)
@@ -49,7 +54,7 @@ struct ExpenseCard: View {
                             .font(.caption)
                             .opacity(0.7)
 
-                        Text(expenseVM.convertExpensesToCurrency(expenses: expenseVM.expenses, type: .income))
+                        Text(expenseVM.convertTransactionToCurrency(transactions: transaction, type: .income))
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)
@@ -68,7 +73,7 @@ struct ExpenseCard: View {
                             .font(.caption)
                             .opacity(0.7)
 
-                        Text(expenseVM.convertExpensesToCurrency(expenses: expenseVM.expenses, type: .expense))
+                        Text(expenseVM.convertTransactionToCurrency(transactions: transaction, type: .expense))
                             .font(.callout)
                             .fontWeight(.semibold)
                             .lineLimit(1)

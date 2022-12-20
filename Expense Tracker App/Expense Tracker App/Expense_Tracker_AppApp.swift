@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct Expense_Tracker_AppApp: App {
-    //@StateObject private var dataController = DataController()
+    @StateObject private var dataController = DataController()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                //.environment(\.managedObjectContext, dataController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

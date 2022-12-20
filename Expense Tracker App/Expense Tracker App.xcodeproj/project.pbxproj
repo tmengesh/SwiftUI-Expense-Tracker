@@ -7,32 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11858ACE29509AE4007EFD1B /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858ACD29509AE4007EFD1B /* GradientButton.swift */; };
+		11858AD02950A9C7007EFD1B /* EditExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */; };
+		11858AD42950FF18007EFD1B /* CustomCheckboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */; };
 		11C74D17294B3CBD001E886D /* Expense_Tracker_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D16294B3CBD001E886D /* Expense_Tracker_AppApp.swift */; };
 		11C74D19294B3CBD001E886D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D18294B3CBD001E886D /* ContentView.swift */; };
 		11C74D1B294B3CBF001E886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C74D1A294B3CBF001E886D /* Assets.xcassets */; };
 		11C74D1E294B3CBF001E886D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C74D1D294B3CBF001E886D /* Preview Assets.xcassets */; };
 		11C74D28294B47C1001E886D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D27294B47C1001E886D /* HomeView.swift */; };
-		11C74D2A294B4821001E886D /* Expense2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D29294B4821001E886D /* Expense2.swift */; };
 		11C74D2C294B4A74001E886D /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D2B294B4A74001E886D /* ExpenseViewModel.swift */; };
 		11C74D2E294B7729001E886D /* TransactionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D2D294B7729001E886D /* TransactionCardView.swift */; };
 		11C74D30294B9210001E886D /* FilteredDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D2F294B9210001E886D /* FilteredDetailView.swift */; };
 		11C74D32294B9710001E886D /* ExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D31294B9710001E886D /* ExpenseCard.swift */; };
 		11C74D34294C5FD0001E886D /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D33294C5FD0001E886D /* NewExpenseView.swift */; };
+		11C74D42294D0FF5001E886D /* TransactionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D40294D0FF5001E886D /* TransactionModel.xcdatamodeld */; };
+		11C74D44294D10A2001E886D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D43294D10A2001E886D /* DataController.swift */; };
+		11C74D46294E3DF0001E886D /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D45294E3DF0001E886D /* TransactionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11858ACD29509AE4007EFD1B /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseView.swift; sourceTree = "<group>"; };
+		11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckboxes.swift; sourceTree = "<group>"; };
 		11C74D13294B3CBD001E886D /* Expense Tracker App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C74D16294B3CBD001E886D /* Expense_Tracker_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_Tracker_AppApp.swift; sourceTree = "<group>"; };
 		11C74D18294B3CBD001E886D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		11C74D1A294B3CBF001E886D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11C74D1D294B3CBF001E886D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		11C74D27294B47C1001E886D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		11C74D29294B4821001E886D /* Expense2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense2.swift; sourceTree = "<group>"; };
 		11C74D2B294B4A74001E886D /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
 		11C74D2D294B7729001E886D /* TransactionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCardView.swift; sourceTree = "<group>"; };
 		11C74D2F294B9210001E886D /* FilteredDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredDetailView.swift; sourceTree = "<group>"; };
 		11C74D31294B9710001E886D /* ExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCard.swift; sourceTree = "<group>"; };
 		11C74D33294C5FD0001E886D /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
+		11C74D41294D0FF5001E886D /* ExpenseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseModel.xcdatamodel; sourceTree = "<group>"; };
+		11C74D43294D10A2001E886D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		11C74D45294E3DF0001E886D /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +56,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11858ACA29509967007EFD1B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				11C74D2D294B7729001E886D /* TransactionCardView.swift */,
+				11C74D31294B9710001E886D /* ExpenseCard.swift */,
+				11858ACD29509AE4007EFD1B /* GradientButton.swift */,
+				11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		11C74D0A294B3CBD001E886D = {
 			isa = PBXGroup;
 			children = (
@@ -65,8 +86,8 @@
 		11C74D15294B3CBD001E886D /* Expense Tracker App */ = {
 			isa = PBXGroup;
 			children = (
+				11C74D3F294D0F80001E886D /* DataModel */,
 				11C74D26294B47A6001E886D /* ViewModel */,
-				11C74D25294B479E001E886D /* Model */,
 				11C74D24294B478F001E886D /* View */,
 				11C74D16294B3CBD001E886D /* Expense_Tracker_AppApp.swift */,
 				11C74D1A294B3CBF001E886D /* Assets.xcassets */,
@@ -86,22 +107,14 @@
 		11C74D24294B478F001E886D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				11858ACA29509967007EFD1B /* Components */,
 				11C74D18294B3CBD001E886D /* ContentView.swift */,
 				11C74D27294B47C1001E886D /* HomeView.swift */,
-				11C74D2D294B7729001E886D /* TransactionCardView.swift */,
 				11C74D2F294B9210001E886D /* FilteredDetailView.swift */,
-				11C74D31294B9710001E886D /* ExpenseCard.swift */,
 				11C74D33294C5FD0001E886D /* NewExpenseView.swift */,
+				11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		11C74D25294B479E001E886D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				11C74D29294B4821001E886D /* Expense2.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		11C74D26294B47A6001E886D /* ViewModel */ = {
@@ -110,6 +123,16 @@
 				11C74D2B294B4A74001E886D /* ExpenseViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		11C74D3F294D0F80001E886D /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				11C74D40294D0FF5001E886D /* TransactionModel.xcdatamodeld */,
+				11C74D43294D10A2001E886D /* DataController.swift */,
+				11C74D45294E3DF0001E886D /* TransactionType.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,15 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11C74D2A294B4821001E886D /* Expense2.swift in Sources */,
 				11C74D30294B9210001E886D /* FilteredDetailView.swift in Sources */,
 				11C74D28294B47C1001E886D /* HomeView.swift in Sources */,
 				11C74D19294B3CBD001E886D /* ContentView.swift in Sources */,
+				11C74D46294E3DF0001E886D /* TransactionType.swift in Sources */,
+				11C74D42294D0FF5001E886D /* TransactionModel.xcdatamodeld in Sources */,
+				11C74D44294D10A2001E886D /* DataController.swift in Sources */,
 				11C74D2C294B4A74001E886D /* ExpenseViewModel.swift in Sources */,
 				11C74D17294B3CBD001E886D /* Expense_Tracker_AppApp.swift in Sources */,
 				11C74D32294B9710001E886D /* ExpenseCard.swift in Sources */,
+				11858ACE29509AE4007EFD1B /* GradientButton.swift in Sources */,
+				11858AD02950A9C7007EFD1B /* EditExpenseView.swift in Sources */,
 				11C74D2E294B7729001E886D /* TransactionCardView.swift in Sources */,
 				11C74D34294C5FD0001E886D /* NewExpenseView.swift in Sources */,
+				11858AD42950FF18007EFD1B /* CustomCheckboxes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +419,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		11C74D40294D0FF5001E886D /* TransactionModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				11C74D41294D0FF5001E886D /* ExpenseModel.xcdatamodel */,
+			);
+			currentVersion = 11C74D41294D0FF5001E886D /* ExpenseModel.xcdatamodel */;
+			path = TransactionModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 11C74D0B294B3CBD001E886D /* Project object */;
 }

@@ -9,6 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var expenseVM: ExpenseViewModel = .init()
+
+    // MARK: Core Data Fetch
+
+    @Environment(\.managedObjectContext) var managedObjContext
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var transaction: FetchedResults<Transaction>
+
+    // MARK: Displaying Price
+
+    // var transaction: FetchedResults<Transaction>
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 15) {
@@ -38,9 +48,10 @@ struct HomeView: View {
                             .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
                     }
                 }
-                ExpenseCard()
+                ExpenseCard(transaction: transaction)
                     .environmentObject(expenseVM)
                 TransactionView()
+                    .environmentObject(expenseVM)
             }
             .padding()
         }
@@ -48,14 +59,14 @@ struct HomeView: View {
             Color("Background")
                 .ignoresSafeArea()
         }
+        .overlay(alignment: .bottomTrailing) {
+            AddButton()
+        }
         .fullScreenCover(isPresented: $expenseVM.addNewExpense) {
             expenseVM.clearData()
         } content: {
             NewExpenseView()
                 .environmentObject(expenseVM)
-        }
-        .overlay(alignment: .bottomTrailing) {
-            AddButton()
         }
     }
 
@@ -89,19 +100,33 @@ struct HomeView: View {
 
     @ViewBuilder
     func TransactionView() -> some View {
-        VStack(spacing: 15) {
-            Text("Transactions")
-                .font(.title2.bold())
-                .opacity(0.7)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            ForEach(expenseVM.expenses) { expense in
-
-                // MARK: Transaction Card View
-
-                TransactionCardView(expense: expense)
-                    .environmentObject(expenseVM)
+        NavigationView {
+            VStack(alignment: .leading) {
+                List {
+                    ForEach(transaction) { transaction in
+                        NavigationLink(destination: EditExpenseView(transaction: transaction)) {
+                            TransactionCardView(transaction: transaction)
+                        }
+                    }.onDelete(perform: deleteTransaction)
+                }
+                .listStyle(.plain)
+                .navigationTitle("Transactions")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
+                    }
+                }
             }
+        }
+    }
+
+    private func deleteTransaction(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { transaction[$0] }
+                .forEach(managedObjContext.delete)
+
+            // Saves to our database
+            DataController().save(context: managedObjContext)
         }
     }
 }

@@ -10,10 +10,16 @@ import SwiftUI
 struct FilteredDetailView: View {
     @EnvironmentObject var expenseVM: ExpenseViewModel
 
+    // MARK: Core Data Fetch
+
+    @Environment(\.managedObjectContext) var managedObjContext
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var transaction: FetchedResults<Transaction>
+
     // MARK: Environment Values
 
     @Environment(\.self) var env
     @Namespace var animation
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 15) {
@@ -47,7 +53,7 @@ struct FilteredDetailView: View {
 
                 // MARK: Expense Card View For Currently Selected Date
 
-                ExpenseCard(isFilter: true)
+                ExpenseCard(transaction: transaction, isFilter: true)
                     .environmentObject(expenseVM)
 
                 CustomSegmentedControl()
@@ -59,7 +65,7 @@ struct FilteredDetailView: View {
                     Text(expenseVM.convertDateToString())
                         .opacity(0.7)
 
-                    Text(expenseVM.convertExpensesToCurrency(expenses: expenseVM.expenses, type: expenseVM.tabName))
+                    Text(expenseVM.convertTransactionToCurrency(transactions: transaction, type: expenseVM.tabName))
                         .font(.title.bold())
                         .opacity(0.9)
                         .animation(.none, value: expenseVM.tabName)
@@ -72,11 +78,11 @@ struct FilteredDetailView: View {
                 }
                 .padding(.vertical, 20)
 
-                ForEach(expenseVM.expenses.filter {
-                    $0.type == expenseVM.tabName
-                }) { expense in
-                    TransactionCardView(expense: expense)
-                        .environmentObject(expenseVM)
+                ForEach(transaction.filter {
+                    $0.expenseType == expenseVM.tabName.rawValue
+                }) { transaction in
+                    TransactionCardView(transaction: transaction)
+                        .environmentObject(transaction)
                 }
             }
             .padding()
@@ -98,8 +104,8 @@ struct FilteredDetailView: View {
             Color.black
                 .opacity(expenseVM.showFilterView ? 0.25 : 0)
                 .ignoresSafeArea()
-            
-            //MARK: Based On the Date Filter Expense Array
+
+            // MARK: Based On the Date Filter Expense Array
 
             if expenseVM.showFilterView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -151,7 +157,7 @@ struct FilteredDetailView: View {
     @ViewBuilder
     func CustomSegmentedControl() -> some View {
         HStack(spacing: 0) {
-            ForEach([ExpenseType.income, ExpenseType.expense], id: \.rawValue) { tab in
+            ForEach([TransactionType.income, TransactionType.expense], id: \.rawValue) { tab in
                 Text(tab.rawValue.capitalized)
                     .fontWeight(.semibold)
                     .foregroundColor(expenseVM.tabName == tab ? .white : .black)

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct NewExpenseView: View {
-   
     // MARK: Environment Values
+
     @EnvironmentObject var expenseVM: ExpenseViewModel
     @Environment(\.managedObjectContext) var managedObjContext
-
     @Environment(\.self) var env
+
+    @State private var showingAlert = false
+
     var body: some View {
         VStack {
             VStack(spacing: 15) {
@@ -108,29 +110,23 @@ struct NewExpenseView: View {
 
             // MARK: Save Button
 
-            Button(action: { expenseVM.saveData(env: env)
-                
-            }) {
-                Text("Save")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .padding(.vertical, 15)
-                    .frame(maxWidth: .infinity)
-                    .background {
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(
-                                LinearGradient(colors: [
-                                    Color("Gradient1"),
-                                    Color("Gradient2"),
-                                    Color("Gradient3"),
-                                ], startPoint: .topLeading, endPoint: .bottomTrailing)
-                            )
-                    }
-                    .foregroundColor(.white)
-                    .padding(.bottom, 10)
+            GradientButton(text: "Save") {
+                let amountInDouble = (expenseVM.amount as NSString).doubleValue
+                let colors = ["Yellow", "Red", "Purple", "Green"]
+
+                DataController().addTransaction(remark: expenseVM.remark, amount: amountInDouble, date: expenseVM.date, color: colors.randomElement() ?? "Yellow", type: expenseVM.type, context: managedObjContext)
+
+                expenseVM.clearData()
+
+                showingAlert = true
             }
+
             .disabled(expenseVM.remark == "" || expenseVM.type == .all || expenseVM.amount == "")
             .opacity(expenseVM.remark == "" || expenseVM.type == .all || expenseVM.amount == "" ? 0.6 : 1)
+
+            .alert("New transaction has been added to the database", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) {}
+            }
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -151,40 +147,6 @@ struct NewExpenseView: View {
             }
             .padding()
         }
-    }
-
-    // MARK: Checkboxes
-
-    @ViewBuilder
-    func CustomCheckboxes() -> some View {
-        HStack(spacing: 10) {
-            ForEach([ExpenseType.income, ExpenseType.expense], id: \.self) { type in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 2)
-                        .stroke(.black, lineWidth: 2)
-                        .opacity(0.5)
-                        .frame(width: 20, height: 20)
-
-                    if expenseVM.type == type {
-                        Image(systemName: "checkmark")
-                            .font(.caption.bold())
-                            .foregroundColor(Color("Green"))
-                    }
-                }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    expenseVM.type = type
-                }
-
-                Text(type.rawValue.capitalized)
-                    .font(.callout)
-                    .fontWeight(.semibold)
-                    .opacity(0.7)
-                    .padding(.trailing, 10)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.leading, 10)
     }
 }
 

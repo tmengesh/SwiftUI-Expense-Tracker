@@ -5,6 +5,7 @@
 //  Created by Tewodros Mengesha on 15.12.2022.
 //
 
+import CoreData
 import SwiftUI
 
 class ExpenseViewModel: ObservableObject {
@@ -14,11 +15,9 @@ class ExpenseViewModel: ObservableObject {
     @Published var endDate: Date = .init()
     @Published var currentMonthStartDate: Date = .init()
 
-
-
     // MARK: Expense / Income Tab
 
-    @Published var tabName: ExpenseType = .expense
+    @Published var tabName: TransactionType = .expense
 
     // MARK: Filter View
 
@@ -27,8 +26,9 @@ class ExpenseViewModel: ObservableObject {
     // MARK: New Expense Properties
 
     @Published var addNewExpense: Bool = false
+    @Published var editExpense: Bool = false
     @Published var amount: String = ""
-    @Published var type: ExpenseType = .all
+    @Published var type: TransactionType = .all
     @Published var date: Date = .init()
     @Published var remark: String = ""
 
@@ -42,19 +42,35 @@ class ExpenseViewModel: ObservableObject {
         currentMonthStartDate = calendar.date(from: components)!
     }
 
-    @Published var expenses: [Expense2] = sample_expenses
-
     // MARK: Fetching Current Month Date String
 
     func currentMonthDateString() -> String {
         return currentMonthStartDate.formatted(date: .abbreviated, time: .omitted) + " - " + Date().formatted(date: .abbreviated, time: .omitted)
     }
 
-    func convertExpensesToCurrency(expenses: [Expense2], type: ExpenseType = .all) -> String {
+    // MARK: Converting ConvertedTransaction to Currency String
+
+    func convertTransactionToCurrency(transactions: FetchedResults<Transaction>, type: TransactionType = .all) -> String {
         var value: Double = 0
 
-        value = expenses.reduce(0) { partialResult, expense in
-            partialResult + (type == .all ? (expense.type == .income ? expense.amount : -expense.amount) : (expense.type == type ? expense.amount : 0))
+        value = transactions.reduce(0) { partialResult, transaction in
+            var value: Double {
+                if transaction.expenseType == TransactionType.income.rawValue {
+                    return transaction.amount
+                } else {
+                    return -transaction.amount
+                }
+            }
+
+            var value2: Double {
+                if transaction.expenseType == type.rawValue {
+                    return transaction.amount
+                } else {
+                    return 0
+                }
+            }
+
+            return partialResult + (type == .all ? value : value2)
         }
 
         return convertNumberToPrice(value: value)
@@ -82,22 +98,5 @@ class ExpenseViewModel: ObservableObject {
         type = .all
         remark = ""
         amount = ""
-    }
-
-    // MARK: Save Data
-
-    func saveData(env: EnvironmentValues) {
-        // MARK: Do Actions Here
-
-        print("Save")
-        let amountInDouble = (amount as NSString).doubleValue
-        let colors = ["Yellow", "Red", "Purple", "Green"]
-        let expense = Expense2(remark: remark, amount: amountInDouble, date: date, type: type, color: colors.randomElement() ?? "Yellow")
-        withAnimation { expenses.append(expense) }
-        expenses = expenses.sorted(by: { first, second in
-            second.date < first.date
-        })
-
-        env.dismiss()
     }
 }
