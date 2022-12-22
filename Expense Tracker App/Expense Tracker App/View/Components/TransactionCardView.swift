@@ -33,7 +33,7 @@ struct TransactionCardView: View {
 
             // MARK: Displaying Remark
 
-            Text(transaction.remark!)
+            Text(transaction.remark ?? "")
                 .fontWeight(.semibold)
                 .lineLimit(2)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -48,7 +48,7 @@ struct TransactionCardView: View {
                     .opacity(0.7)
                     .foregroundColor(transaction.expenseType == TransactionType.expense.rawValue
                         ? Color("Red") : Color("Green"))
-                Text(transaction.date!.formatted(date: .numeric, time: .omitted))
+                Text(transaction.date?.formatted(date: .numeric, time: .omitted) ?? "")
                     .font(.caption)
                     .opacity(0.5)
             }

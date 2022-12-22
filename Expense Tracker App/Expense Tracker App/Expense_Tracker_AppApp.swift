@@ -12,7 +12,7 @@ struct Expense_Tracker_AppApp: App {
     @StateObject private var dataController = DataController()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

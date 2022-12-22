@@ -105,23 +105,26 @@ struct HomeView: View {
     func TransactionView() -> some View {
         NavigationView {
             VStack(alignment: .leading) {
-                List {
-                    ForEach(transaction) { transaction in
-                        NavigationLink(destination: EditExpenseView(transaction: transaction)) {
-                            TransactionCardView(transaction: transaction)
-                        }
-                    }.onDelete(perform: deleteTransaction)
-                }
-                .listStyle(.plain)
-                .navigationTitle("Transactions")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        EditButton()
+                if transaction.count > 0 {
+                    List {
+                        ForEach(transaction) { transaction in
+                            NavigationLink(destination: EditExpenseView(transaction: transaction)) {
+                                TransactionCardView(transaction: transaction)
+                            }
+                        }.onDelete(perform: deleteTransaction)
                     }
-                }
-                .onAppear {
-                    print("I am loaded")
-                    // managedObjContext.reset()
+                    .listStyle(.plain)
+                    .navigationTitle("Transactions")
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            EditButton()
+                        }
+                    }
+                } else {
+                    Text("No transactions at the moment")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.gray)
                 }
             }
         }

@@ -78,7 +78,7 @@ struct EditExpenseView: View {
                     DataController().editTransaction(transaction: transaction, remark: remark, amount: amountInDouble, date: date, type: expenseVM.type, context: managedObjContext)
 
                     remark = ""
-                    amount = ""
+                    amount = ""                    
                     showingAlert = true
                 }
                 .disabled(remark == "" || expenseVM.type == .all || amount == "")

@@ -11,6 +11,7 @@
 		11858AD02950A9C7007EFD1B /* EditExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */; };
 		11858AD42950FF18007EFD1B /* CustomCheckboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */; };
 		11858AD72951BDFF007EFD1B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858AD62951BDFF007EFD1B /* Logger.swift */; };
+		11858ADB2954486B007EFD1B /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858ADA2954486B007EFD1B /* SplashScreenView.swift */; };
 		11C74D17294B3CBD001E886D /* Expense_Tracker_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D16294B3CBD001E886D /* Expense_Tracker_AppApp.swift */; };
 		11C74D19294B3CBD001E886D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C74D18294B3CBD001E886D /* ContentView.swift */; };
 		11C74D1B294B3CBF001E886D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C74D1A294B3CBF001E886D /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseView.swift; sourceTree = "<group>"; };
 		11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckboxes.swift; sourceTree = "<group>"; };
 		11858AD62951BDFF007EFD1B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		11858ADA2954486B007EFD1B /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		11C74D13294B3CBD001E886D /* Expense Tracker App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		11C74D16294B3CBD001E886D /* Expense_Tracker_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense_Tracker_AppApp.swift; sourceTree = "<group>"; };
 		11C74D18294B3CBD001E886D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				11C74D2F294B9210001E886D /* FilteredDetailView.swift */,
 				11C74D33294C5FD0001E886D /* NewExpenseView.swift */,
 				11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */,
+				11858ADA2954486B007EFD1B /* SplashScreenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				11C74D42294D0FF5001E886D /* TransactionModel.xcdatamodeld in Sources */,
 				11C74D44294D10A2001E886D /* DataController.swift in Sources */,
 				11C74D2C294B4A74001E886D /* ExpenseViewModel.swift in Sources */,
+				11858ADB2954486B007EFD1B /* SplashScreenView.swift in Sources */,
 				11C74D17294B3CBD001E886D /* Expense_Tracker_AppApp.swift in Sources */,
 				11C74D32294B9710001E886D /* ExpenseCard.swift in Sources */,
 				11858ACE29509AE4007EFD1B /* GradientButton.swift in Sources */,
