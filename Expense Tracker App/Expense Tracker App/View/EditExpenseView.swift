@@ -22,7 +22,7 @@ struct EditExpenseView: View {
     @State private var remark = ""
     @State private var amount = ""
     @State private var date: Date = .init()
-    @State private var transactionType: TransactionType = .expense
+    // @State private var transactionType: TransactionType = .all
     
     var body: some View {
         VStack(spacing: 5) {
@@ -57,7 +57,7 @@ struct EditExpenseView: View {
                         .foregroundColor(Color("Gray"))
                 }
                         
-                CustomCheckboxes(isEditMode: true)
+                CustomCheckboxes()
                         
                 Label {
                     DatePicker("\(date)", selection: $date, in: Date.distantPast ... Date(), displayedComponents: [.date])
@@ -75,16 +75,14 @@ struct EditExpenseView: View {
                 GradientButton(text: "Update") {
                     let amountInDouble = (amount as NSString).doubleValue
                             
-                    DataController().editTransaction(transaction: transaction, remark: remark, amount: amountInDouble, date: date, type: transactionType, context: managedObjContext)
+                    DataController().editTransaction(transaction: transaction, remark: remark, amount: amountInDouble, date: date, type: expenseVM.type, context: managedObjContext)
 
                     remark = ""
                     amount = ""
-                    transactionType = TransactionType.all
-                    
                     showingAlert = true
                 }
-                .disabled(remark == "" || transactionType == .all || amount == "")
-                .opacity(remark == "" || transactionType == .all || amount == "" ? 0.6 : 1)
+                .disabled(remark == "" || expenseVM.type == .all || amount == "")
+                .opacity(remark == "" || expenseVM.type == .all || amount == "" ? 0.6 : 1)
                 .alert("Transaction has been updated", isPresented: $showingAlert) {
                     Button("OK", role: .cancel) {}
                 }

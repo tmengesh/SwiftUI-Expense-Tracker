@@ -11,7 +11,7 @@ import SwiftUI
 struct TransactionCardView: View {
     // MARK: Variables
 
-    var transaction: Transaction
+    @ObservedObject var transaction: Transaction
     @EnvironmentObject var expenseVM: ExpenseViewModel
 
     private let logger = Logger.createLogger()
@@ -35,7 +35,7 @@ struct TransactionCardView: View {
 
             Text(transaction.remark!)
                 .fontWeight(.semibold)
-                .lineLimit(1)
+                .lineLimit(2)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(alignment: .trailing, spacing: 7) {

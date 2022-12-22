@@ -5,8 +5,8 @@
 //  Created by Tewodros Mengesha on 15.12.2022.
 //
 
-import SwiftUI
 import os
+import SwiftUI
 
 struct HomeView: View {
     @StateObject var expenseVM: ExpenseViewModel = .init()
@@ -19,7 +19,7 @@ struct HomeView: View {
     // MARK: Displaying Price
 
     // var transaction: FetchedResults<Transaction>
-    
+
     private let logger = Logger.createLogger()
 
     var body: some View {
@@ -118,6 +118,10 @@ struct HomeView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()
                     }
+                }
+                .onAppear {
+                    print("I am loaded")
+                    // managedObjContext.reset()
                 }
             }
         }

@@ -11,9 +11,7 @@ import SwiftUI
 
 struct CustomCheckboxes: View {
     @EnvironmentObject var expenseVM: ExpenseViewModel
-    var isEditMode = false
-    @State var expenseType = TransactionType.all
-    
+
     var body: some View {
         HStack(spacing: 10) {
             ForEach([TransactionType.income, TransactionType.expense], id: \.self) { type in
@@ -23,30 +21,15 @@ struct CustomCheckboxes: View {
                         .opacity(0.5)
                         .frame(width: 20, height: 20)
 
-                    if isEditMode {
-                        if expenseType == type {
-                            Image(systemName: "checkmark")
-                                .font(.caption.bold())
-                                .foregroundColor(Color("Green"))
-                        }
-                    }
-                    else {
-                        if expenseVM.type == type {
-                            Image(systemName: "checkmark")
-                                .font(.caption.bold())
-                                .foregroundColor(Color("Green"))
-                        }
+                    if expenseVM.type == type {
+                        Image(systemName: "checkmark")
+                            .font(.caption.bold())
+                            .foregroundColor(Color("Green"))
                     }
                 }
                 .contentShape(Rectangle())
                 .onTapGesture {
-                    if isEditMode {
-                        expenseType = type
-                    }
-                    else {
-                        expenseVM.type = type
-
-                    }
+                    expenseVM.type = type
                 }
 
                 Text(type.rawValue.capitalized)
