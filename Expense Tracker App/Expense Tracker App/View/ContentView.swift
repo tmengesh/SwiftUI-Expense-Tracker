@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    // NOTE: Change isUnlocekd to false if faceID and passcode needed to be used
+    @State private var isUnlocked = true
     var body: some View {
         VStack {
             NavigationView {
-                HomeView()
-                    .navigationBarHidden(true)
+                if isUnlocked {
+                    HomeView()
+                        .navigationBarHidden(true)
+                } else {
+                    AuthenticationView(isUnlocked: $isUnlocked)
+                }
             }
         }
     }

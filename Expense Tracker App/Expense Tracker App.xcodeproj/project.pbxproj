@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1149E3072959F3E800091B61 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1149E3062959F3E800091B61 /* AuthenticationView.swift */; };
 		11858ACE29509AE4007EFD1B /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858ACD29509AE4007EFD1B /* GradientButton.swift */; };
 		11858AD02950A9C7007EFD1B /* EditExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */; };
 		11858AD42950FF18007EFD1B /* CustomCheckboxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1149E3062959F3E800091B61 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		1149E3082959F7F200091B61 /* Expense-Tracker-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Expense-Tracker-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		11858ACD29509AE4007EFD1B /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExpenseView.swift; sourceTree = "<group>"; };
 		11858AD32950FF18007EFD1B /* CustomCheckboxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCheckboxes.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		11C74D15294B3CBD001E886D /* Expense Tracker App */ = {
 			isa = PBXGroup;
 			children = (
+				1149E3082959F7F200091B61 /* Expense-Tracker-App-Info.plist */,
 				11858AD52951BDF2007EFD1B /* Utils */,
 				11C74D3F294D0F80001E886D /* DataModel */,
 				11C74D26294B47A6001E886D /* ViewModel */,
@@ -130,6 +134,7 @@
 				11C74D33294C5FD0001E886D /* NewExpenseView.swift */,
 				11858ACF2950A9C7007EFD1B /* EditExpenseView.swift */,
 				11858ADA2954486B007EFD1B /* SplashScreenView.swift */,
+				1149E3062959F3E800091B61 /* AuthenticationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				11858ACE29509AE4007EFD1B /* GradientButton.swift in Sources */,
 				11858AD72951BDFF007EFD1B /* Logger.swift in Sources */,
 				11858AD02950A9C7007EFD1B /* EditExpenseView.swift in Sources */,
+				1149E3072959F3E800091B61 /* AuthenticationView.swift in Sources */,
 				11C74D2E294B7729001E886D /* TransactionCardView.swift in Sources */,
 				11C74D34294C5FD0001E886D /* NewExpenseView.swift in Sources */,
 				11858AD42950FF18007EFD1B /* CustomCheckboxes.swift in Sources */,
@@ -295,7 +301,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -349,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -370,11 +376,14 @@
 				DEVELOPMENT_TEAM = R547K25NLW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Expense-Tracker-App-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,11 +408,14 @@
 				DEVELOPMENT_TEAM = R547K25NLW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Expense-Tracker-App-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

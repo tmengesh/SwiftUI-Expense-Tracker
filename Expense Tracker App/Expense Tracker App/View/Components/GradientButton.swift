@@ -17,7 +17,6 @@ struct GradientButton: View {
                 Text(text)
             }
             .font(.title3)
-            .fontWeight(.semibold)
             .padding(.vertical, 15)
             .frame(maxWidth: .infinity)
             .background {
