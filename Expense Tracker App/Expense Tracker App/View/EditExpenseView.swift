@@ -30,7 +30,7 @@ struct EditExpenseView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
                 .opacity(0.5)
-                    
+            
             // MARK: Custom Labels
 
             Group {
@@ -46,6 +46,14 @@ struct EditExpenseView: View {
                     Image(systemName: "list.bullet.rectangle.portrait.fill")
                         .font(.title3)
                         .foregroundColor(Color("Gray"))
+                }
+
+                // MARK: Custom Alert View
+
+                if showingAlert {
+                    CustomDialog(title: "Sucess", message: "Transaction has been updated", buttonTitle: "Ok")
+                        .transition(.move(edge: .top))
+                        .animation(.easeInOut, value: showingAlert)
                 }
                         
                 Label {
@@ -78,14 +86,11 @@ struct EditExpenseView: View {
                     DataController().editTransaction(transaction: transaction, remark: remark, amount: amountInDouble, date: date, type: expenseVM.type, context: managedObjContext)
 
                     remark = ""
-                    amount = ""                    
+                    amount = ""
                     showingAlert = true
                 }
                 .disabled(remark == "" || expenseVM.type == .all || amount == "")
                 .opacity(remark == "" || expenseVM.type == .all || amount == "" ? 0.6 : 1)
-                .alert("Transaction has been updated", isPresented: $showingAlert) {
-                    Button("OK", role: .cancel) {}
-                }
             }
                    
             .padding(.horizontal, 5)

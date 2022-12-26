@@ -108,6 +108,14 @@ struct NewExpenseView: View {
             }
             .frame(maxHeight: .infinity, alignment: .center)
 
+            // MARK: Custom Alert View
+
+            if showingAlert {
+                CustomDialog(title: "Sucess", message: "New transaction has been added to the database", buttonTitle: "Ok")
+                    .transition(.move(edge: .top))
+                    .animation(.easeInOut, value: showingAlert)
+            }
+
             // MARK: Save Button
 
             GradientButton(text: "Save") {
@@ -123,10 +131,6 @@ struct NewExpenseView: View {
 
             .disabled(expenseVM.remark == "" || expenseVM.type == .all || expenseVM.amount == "")
             .opacity(expenseVM.remark == "" || expenseVM.type == .all || expenseVM.amount == "" ? 0.6 : 1)
-
-            .alert("New transaction has been added to the database", isPresented: $showingAlert) {
-                Button("OK", role: .cancel) {}
-            }
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
